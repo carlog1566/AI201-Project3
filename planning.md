@@ -72,7 +72,7 @@ For example, "Why Do People Act Like Their Opinion on Music Is A Fact?" is writt
 - If the author mainly seeks responses or information from others, I will label it as Qeustion
 
 
-## Data Collection Plain
+## Data Collection Plan
 
 I will collect examples from r/LetsTalkMusic using Reddit's public API and or directly scraping publicly visible posts from the subreddit feed. I will prioritzize posts with full discussion threads to ensure enough context for the labeling.
 
@@ -98,3 +98,20 @@ I will use multiple metrics due to dealing with multi-class text classification:
 - Recall (per class): Measures howmany true posts of a label are correctly identified. Important for detecting whether the model is missing any harder categories
 - F1-score: Balances precisiona nd recall equally across all labels. Very important since it prevents large classes from dominating performance
 - Confusion Matrix: Helps identify systematic confusion between the labels, useful visualization
+
+
+## Definition of Success
+
+The classifier will be considered successful if it meets the following thresholds:
+
+- Overall Accuracy ≥ 85%
+- Macro F1-score ≥ 0.80
+- No individual class F1-score below 0.75
+
+In addition to numerical performance, the model must also demonstrate:
+
+- Clear separation between Question vs Discussion
+- Reasonable handling of long-form posts (especially Analysis)
+- No strong bias toward over-predicting one dominant label
+
+A model meeting these criteria would be considered good enough for a real community tool while anything below these thresholds would likely require more tinkering until it becomes good enough to use for the community.
