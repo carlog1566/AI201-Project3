@@ -59,3 +59,12 @@ I chose r/LetsTalkMusic because it is a discussion-focused music community where
 
 **Uncertain Example: "What do you think of when band members go solo? Do you think there is any way it can work out afterwards?"**
 - The author asks a question, but most of the post develops a detailed analysis of why solo careers affect bands. I would classify it as Analysis because the reasoning drives the discussion.
+
+## Hard Edge Cases
+
+The hardest distinction is between Discussion and Question since many posts begin with a question but most of the post is written based on the author's own point of view. 
+
+For example, "Why Do People Act Like Their Opinion on Music Is A Fact?" is written as a question, but its main purpose is to express the author's opinon and using a question to only encourage discussion. To handle these cases consistently, I will classify the posts based on their primary purpose:
+- If the author mainly presents their own argument or perspective, I will label it as Discussion
+- If the author mainly seeks responses or information from others, I will label it as Qeustion
+
