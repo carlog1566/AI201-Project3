@@ -1,10 +1,12 @@
 # Project 3 Planning
 
+
 ## Community
 
 ### r/LetsTalkMusic
 
 I chose r/LetsTalkMusic because it is a discussion-focused music community where users post long-form opinions, critiques, questions, historical discussions, and recommendations about different artists, genres, albums, and solos. The community encourages thoughtful conversation which makes it well suited for a text classification task. The wide range of discussion quality like detailed analysis to simple personal opinions creates meaningful distinctions that the classifier can learn from.
+
 
 ## Labels
 
@@ -60,6 +62,7 @@ I chose r/LetsTalkMusic because it is a discussion-focused music community where
 **Uncertain Example: "What do you think of when band members go solo? Do you think there is any way it can work out afterwards?"**
 - The author asks a question, but most of the post develops a detailed analysis of why solo careers affect bands. I would classify it as Analysis because the reasoning drives the discussion.
 
+
 ## Hard Edge Cases
 
 The hardest distinction is between Discussion and Question since many posts begin with a question but most of the post is written based on the author's own point of view. 
@@ -68,3 +71,30 @@ For example, "Why Do People Act Like Their Opinion on Music Is A Fact?" is writt
 - If the author mainly presents their own argument or perspective, I will label it as Discussion
 - If the author mainly seeks responses or information from others, I will label it as Qeustion
 
+
+## Data Collection Plain
+
+I will collect examples from r/LetsTalkMusic using Reddit's public API and or directly scraping publicly visible posts from the subreddit feed. I will prioritzize posts with full discussion threads to ensure enough context for the labeling.
+
+I will aim for at least 200 total posts and try to split it envenly across the 4 labels:
+- Review: 50 posts
+- Discussion: 50 posts
+- Question: 50 posts
+- Analysis: 50 posts
+
+If a label is underrepresented, I will expand the collection window by:
+- Going further back in the subreddit
+- Include more shorter posts
+
+If after reaching 200 total examples and the dataset is still imbalanced, I will:
+- Keep the full dataset for training
+- Use stratified sampling for evaluation splits
+
+
+## Evaluation Metrics
+I will use multiple metrics due to dealing with multi-class text classification:
+- Accuracy: Measures overall correctness of predictions, useful as a baseline
+- Precision (per class): Measures how many posts predicted as a label actually belong to that label. Important for ensuring the classifier does not over-assign common labels
+- Recall (per class): Measures howmany true posts of a label are correctly identified. Important for detecting whether the model is missing any harder categories
+- F1-score: Balances precisiona nd recall equally across all labels. Very important since it prevents large classes from dominating performance
+- Confusion Matrix: Helps identify systematic confusion between the labels, useful visualization
