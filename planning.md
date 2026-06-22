@@ -92,6 +92,7 @@ If after reaching 200 total examples and the dataset is still imbalanced, I will
 
 
 ## Evaluation Metrics
+
 I will use multiple metrics due to dealing with multi-class text classification:
 - Accuracy: Measures overall correctness of predictions, useful as a baseline
 - Precision (per class): Measures how many posts predicted as a label actually belong to that label. Important for ensuring the classifier does not over-assign common labels
@@ -115,3 +116,41 @@ In addition to numerical performance, the model must also demonstrate:
 - No strong bias toward over-predicting one dominant label
 
 A model meeting these criteria would be considered good enough for a real community tool while anything below these thresholds would likely require more tinkering until it becomes good enough to use for the community.
+
+
+## AI Tool Plan
+
+### Label Stress-Testing
+
+Before collecting and labeling the full dataset, I will use ChatGPT to generate 5–10 synthetic Reddit-style posts that would be difficult to classify with the ambiguous label pairs like Discussion and Qeustion.
+
+I will prompt the model using my final label definitions and ask it to create realistic r/LetsTalkMusic-style posts. After generating these examples, I will attempt to classify them myself without assistance. If I cannot consistently assign a single label, I will refine the label definitions (especially the “primary purpose” rule) before starting annotation of the 200-post dataset.
+
+### Annotation Assistance
+
+I may use ChatGPT as a pre-labeling assistant during dataset creation. Specifically, I will:
+
+- Input batches of scraped Reddit posts
+- Ask the model to suggest a label (Review, Discussion, Question, or Analysis)
+- Treat these suggestions as draft labels only
+
+All final labels will be manually verified by me to ensure correctness and consistency. 
+
+To track which examples were pre-labeled, I will use a simple flag in my dataset like ai_prelabel = true/false.
+
+### Failure Analysis
+
+After training and evaluating the classifier, I will analyze incorrect predictions by compiling a list of misclassified posts (false positives and false negatives) and providing them to ChatGPT for pattern detection. I will specifically ask the model to identify:
+
+- Which label pairs are most commonly confused (e.g., Discussion vs Question)
+- Whether errors are driven by post structure (question phrasing vs statement phrasing)
+- Whether long-form posts are being misclassified as another label due to its length
+- Whether subjective opinion posts are being incorrectly labeled as Review
+
+I will then manually verify all AI-suggested patterns by:
+
+- Checking a random sample of misclassified posts
+- Confirming whether the identified pattern consistently holds
+- Ensuring conclusions are based on evidence and not just model speculation
+
+This will help ensure that evaluation insights are accurate and not over-generalized.
