@@ -69,12 +69,12 @@ The hardest distinction is between Discussion and Question since many posts begi
 
 For example, "Why Do People Act Like Their Opinion on Music Is A Fact?" is written as a question, but its main purpose is to express the author's opinon and using a question to only encourage discussion. To handle these cases consistently, I will classify the posts based on their primary purpose:
 - If the author mainly presents their own argument or perspective, I will label it as Discussion
-- If the author mainly seeks responses or information from others, I will label it as Qeustion
+- If the author mainly seeks responses or information from others, I will label it as Question
 
 
 ## Data Collection Plan
 
-I will collect examples from r/LetsTalkMusic using Reddit's public API and or directly scraping publicly visible posts from the subreddit feed. I will prioritzize posts with full discussion threads to ensure enough context for the labeling.
+I will collect examples from r/LetsTalkMusic by manually going through the subreddit's posts. I will prioritzize posts with full discussion threads to ensure enough context for the labeling.
 
 I will aim for at least 200 total posts and try to split it envenly across the 4 labels:
 - Review: 50 posts
@@ -128,15 +128,7 @@ I will prompt the model using my final label definitions and ask it to create re
 
 ### Annotation Assistance
 
-I may use ChatGPT as a pre-labeling assistant during dataset creation. Specifically, I will:
-
-- Input batches of scraped Reddit posts
-- Ask the model to suggest a label (Review, Discussion, Question, or Analysis)
-- Treat these suggestions as draft labels only
-
-All final labels will be manually verified by me to ensure correctness and consistency. 
-
-To track which examples were pre-labeled, I will use a simple flag in my dataset like ai_prelabel = true/false.
+I will not be using an AI tool to help pre-label examples.
 
 ### Failure Analysis
 
