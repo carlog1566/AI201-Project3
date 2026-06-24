@@ -2,6 +2,8 @@
 
 ## Overview
 
+**Link to Loom:** [Loom Video](https://www.loom.com/share/16bda469e84647668a4016e2bc3ac85e)
+
 This project fine-tunes **DistilBERT (`distilbert-base-uncased`)** to classify posts from **r/LetsTalkMusic** into one of four categories:
 
 - **Review** – Evaluates or critiques an artist, album, song, or other musical work.
